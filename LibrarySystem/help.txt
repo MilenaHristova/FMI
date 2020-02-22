@@ -1,0 +1,24 @@
+Available commands:
+
+#login: You will be asked for your username and password in order to log into your account in the system.
+#logout: Exit your account.
+#help: Get information about the available commands.
+#exit: Stops the execution of the program.
+
+Commands, available only to logged in users:
+
+#books all: Get short information about all the books available in the system.
+#books info <isbn_value>: Get full information about the book with the specified id.
+#books find <option> <searchTerm>: Option can be title, author or tag. Find a book according to the 
+specified value of the specified option. Search is case-insensitive.
+#books sort <option>: Get short information about all the books in the system, sorted by a specified 
+criteria (options are year and rating)
+
+Commands, available only to administrator:
+
+#books add: Add a book to the system. You will be asked to enter title, author, genre, summary, year 
+of publishing, rating and key words of the book
+#books remove: Delete a book. You will be asked to enter the books title and author.
+#users add: Register a new user. You will be asked to enter username and password.
+#users remove: Delete a user account. Administrator can delete all accounts. Users can delete only their own account.
+

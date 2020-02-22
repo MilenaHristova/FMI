@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<!--
+	Това е демо-шаблон на първото домашно задание по ОКГ.
+	Вижте коментарите във файла, за да разберете къде да променяте.
+	
+	Разделяне/слепване на двете части на йероглифа:
+		клик с ляв бутон или клавиш "интервал"
+		
+	Показване/скриване на рамката:
+		клик с десен бутон или някой друг клавиш
+-->
+	
+<html>
+	<head>
+		<script src="three.min.js"></script>
+		<script src="kanji.js"></script>
+	</head>
+	
+	<body onload="main()">
+		<!-- В тага h1 си напишете факултетния номер, групата в Мудъл и двете си имена-->
+		<h1>ф.н. 81761 &ndash; група 8 &ndash; Милена Христова</h1>
+
+		<!-- В този script таг напишете кода си за създаване на
+		йероглифа в две половини, разделени с диагонална черта
+		от горе-ляво до долу-дясно. Кодът по-долу е само примерен.
+		Махнете го и сложете вашия код на негово място. -->
+		<script>
+			// Елементите, които принадлежат на горната-дясна половина
+			// на йероглифа ги добавете към обекта PART1, а елементите
+			// на долната-лява половина - в PART2.
+			
+			// Кодът по-надолу създава две стъпаловидни половини на
+			// плочка; целта е да се покаже как да използвате двата
+			// обекта PART1 и PART2 (те са създадени в kanji.js и
+			// пак от там се манипулират, затова не им променяйте
+			// имената).
+			
+			// Създаваме си материал за елементите - добре е да не
+			// е прекалено ярък или тъмен, за да се виждат добре нещата.
+			var material = new THREE.MeshPhongMaterial({color:'gray',shininess:100});
+            var extrudeSettings = { amount: 6, bevelEnabled: true, bevelSegments: 2, steps: 2, bevelSize: 0.1, bevelThickness: 0.1};
+            
+            var shape = new THREE.Shape();
+            shape.moveTo( -8,9 );
+            shape.quadraticCurveTo(  -6, 8, -4.7, 6.1 );
+            shape.lineTo(-5.5, 5.5);
+            shape.lineTo(-8.5, 8.5);
+            shape.lineTo(-8, 9);
+            var up1 = new THREE.Mesh(new THREE.ExtrudeGeometry(shape, extrudeSettings), material);
+            
+            shape = new THREE.Shape();
+            shape.moveTo(-4.9, 8.3);
+            shape.lineTo(-2.2, 8.3);//B1
+            shape.lineTo(-2, 10);//C1
+            shape.lineTo(-0.3, 9.9);//D1
+            shape.lineTo(-0.4, 8.4);//E1
+            shape.lineTo(2.5, 8.35);//F1
+            shape.lineTo(2.5, 6.7);//G1
+            shape.lineTo(-0.4, 6.7);//H1
+            shape.lineTo(-0.4, 5.6);//I1
+            shape.lineTo(2, 5.6);//J1
+            shape.lineTo(1.9, 4.3);//K1
+            shape.lineTo(-0.4, 4);//L1
+            shape.lineTo(-0.4, 3);//M1
+            shape.lineTo(2.8, 3.35);//N1
+            shape.lineTo(2.8, 2);//O1
+            shape.lineTo(-1.37, 1.37);//P1
+            shape.lineTo(-2.8, 2.8);//Q1
+            shape.lineTo(-2.1, 2.9);//R1
+            shape.lineTo(-2, 4);//S1
+            shape.lineTo(-4,4);//T1
+            shape.lineTo(-4.6, 4.6);//U1
+            shape.lineTo(-4.5, 5.6);//V1
+            shape.lineTo(-2.1, 5.7);//W1
+            shape.lineTo(-2.1, 6.7);//Z1
+            shape.lineTo(-4.9, 6.7);
+            shape.lineTo(-4.9, 8.3);
+            var up2 = new THREE.Mesh(new THREE.ExtrudeGeometry(shape, extrudeSettings), material);
+            
+            shape = new THREE.Shape();
+            shape.moveTo(2.8, 7.4);//B1
+            shape.lineTo(2.8, 9);//F1
+            shape.lineTo(9.2, 9);//G1
+            shape.quadraticCurveTo(8.33, 1.6, 5.2, 1.3);//O1
+            shape.lineTo(5, 2.95);//M1
+            shape.quadraticCurveTo(7, 2.7, 7.6, 7.4);//K1
+            shape.lineTo(6.2, 7.4);//J1
+            shape.quadraticCurveTo(5.5, 4.2, 3, 0.63);//H1
+            shape.lineTo(1.9, 1.5);//E1
+            shape.quadraticCurveTo(4, 4.6, 4.5, 7.33);//C1
+            shape.lineTo(2.8, 7.4);//B1
+            var up3 = new THREE.Mesh(new THREE.ExtrudeGeometry(shape, extrudeSettings), material);
+            
+            shape = new THREE.Shape();
+            shape.moveTo(0.9, 1.5);
+            shape.lineTo(2.3, 0.5);
+            shape.lineTo(0.75, -0.75);
+            shape.lineTo(-0.38, 0.38);
+            shape.lineTo(0.9, 1.5);
+            var up4 = new THREE.Mesh(new THREE.ExtrudeGeometry(shape, extrudeSettings), material);
+            
+            shape = new THREE.Shape();
+            shape.moveTo(1.67, -1.67);
+            shape.lineTo(4.7, 0.7);
+            shape.lineTo(6,0);
+            shape.quadraticCurveTo(4.45, -1.6, 2.76, -2.76);
+            //shape.lineTo(2.76, -2.76);
+            shape.lineTo(1.67, -1.67);
+            var up5 = new THREE.Mesh(new THREE.ExtrudeGeometry(shape, extrudeSettings), material);
+  
+            shape = new THREE.Shape();
+            shape.moveTo(3.7, -3.7);
+            shape.lineTo(6.1, -3.5);
+            shape.quadraticCurveTo(5.33, -2.9, 4.6, -2.46);
+            shape.lineTo(5.8, -1.6);
+            shape.quadraticCurveTo(8.1, -3, 9.9, -5.2);
+            shape.lineTo(8.6, -6.2);
+            shape.quadraticCurveTo(8.2, -5.5, 7.64, -4.9);
+            shape.lineTo(5.1, -5.1);
+            shape.lineTo(3.7, -3.7);
+            var up6 = new THREE.Mesh(new THREE.ExtrudeGeometry(shape, extrudeSettings), material);
+            
+            shape = new THREE.Shape();
+            shape.moveTo(5.65, -5.65);
+            shape.quadraticCurveTo(8, -6.7, 10, -8);
+            shape.lineTo(9.24, -9.24);
+            shape.lineTo(5.65, -5.65);
+            var up7 = new THREE.Mesh(new THREE.ExtrudeGeometry(shape, extrudeSettings), material);
+            
+            part1.add(up1, up2, up3, up4, up5, up6, up7);
+            
+            shape = new THREE.Shape();
+            shape.moveTo( -8,9 );
+            shape.lineTo(-9.1, 8);
+            shape.quadraticCurveTo(-7.35, 6.86, -5.83, 5.2);
+            shape.lineTo(-5.5, 5.5);
+            shape.lineTo(-8.5, 8.5);
+            shape.lineTo( -8,9 );
+            var down1 = new THREE.Mesh(new THREE.ExtrudeGeometry(shape, extrudeSettings), material);
+            
+            shape = new THREE.Shape();
+            shape.moveTo(-9, 4.3);
+            shape.quadraticCurveTo(-7, 3, -5.6, 1.4);
+            shape.lineTo(-6.7, 0.35);
+            shape.quadraticCurveTo(-8, 2, -9.8, 3.1);
+            shape.lineTo(-9, 4.3);
+            var down2 = new THREE.Mesh(new THREE.ExtrudeGeometry(shape, extrudeSettings), material);
+            
+            shape = new THREE.Shape();
+            shape.moveTo(-6.8, -1.2);
+            shape.quadraticCurveTo(-7.8, -5.1, -9.9, -9);
+            shape.lineTo(-8.5, -9.9);
+            shape.quadraticCurveTo(-6.3, -5.75, -5.3, -1.54);
+            shape.lineTo(-6.8, -1.2);
+            var down3 = new THREE.Mesh(new THREE.ExtrudeGeometry(shape, extrudeSettings), material);
+            
+            shape = new THREE.Shape();
+            shape.moveTo(-2.8, 2.8);
+            shape.lineTo(-5.5, 2.5);
+            shape.lineTo(-5, 0.9);
+            shape.lineTo(-1.37, 1.37);
+            shape.lineTo(-2.8, 2.8);
+            var down4 = new THREE.Mesh(new THREE.ExtrudeGeometry(shape, extrudeSettings), material);
+            
+            shape = new THREE.Shape();
+            shape.moveTo(5.65, -5.65);//G2
+            shape.quadraticCurveTo(5.37, -5.61, 4.9, -5.5);//01
+            shape.lineTo(4, -6.77);//V1
+            shape.quadraticCurveTo(6.86, -7.88, 9.2, -9.2);//H2
+            shape.lineTo(5.65, -5.65);//G2
+            var down5 = new THREE.Mesh(new THREE.ExtrudeGeometry(shape, extrudeSettings), material);
+            
+            shape = new THREE.Shape();
+            shape.moveTo(-0.38, 0.38);//A2
+            shape.lineTo(-1.5, -0.4);//H1
+            shape.lineTo(-2.76, 0.26);//0
+            shape.lineTo(-4, -1);//R
+            shape.lineTo(-0.6, -3.2);//T
+            shape.lineTo(-1.65, -3.85);//L1
+            shape.lineTo(-5.2, -4);//G1
+            shape.lineTo(-4.6, -5.6);//B1
+            shape.lineTo(1.2, -5.3);//K1
+            shape.lineTo(1.3, -9.95);//C1
+            shape.lineTo(3, -9.95);//J1
+            shape.lineTo(3, -5.3);//F1
+            shape.lineTo(5.1, -5.1);//F2
+            shape.lineTo(3.7, -3.7);//E2
+            shape.lineTo(0.75, -3.85);//01
+            shape.quadraticCurveTo(1.86, -3.3, 2.76, -2.76);
+            shape.lineTo(1.68, -1.68);//C2
+            shape.lineTo(1, -2);//M1
+            shape.lineTo(-0.2, -1.36);//I1
+            shape.lineTo(0.75, -0.75);//B2
+            shape.lineTo(-0.38, 0.38);//A2
+            var down6 = new THREE.Mesh(new THREE.ExtrudeGeometry(shape, extrudeSettings), material);
+            
+            shape = new THREE.Shape();
+            shape.moveTo(-5.9, -7.7);
+            shape.quadraticCurveTo(-3.1, -7, -0.96, -5.75);
+            shape.lineTo(0.1, -6.7);
+            shape.quadraticCurveTo(-2.2, -8.3, -5.1, -9.2);
+            shape.lineTo(-5.9, -7.7);
+            var down7 = new THREE.Mesh(new THREE.ExtrudeGeometry(shape, extrudeSettings), material);
+            
+            part2.add(down1, down2, down3, down4, down5, down6, down7);
+
+			// Файлът kanji.js се грижи да нарисува земята и двете половини
+			// на йероглифа; грижи се и раздалечаването и приближаването на
+			// тези половини; показване/скриване на рамката; звукови ефекти
+			// и потрепване. Това е само за ваша информация, ако евентуално
+			// се чудете къде се прави магията. Това май е най-подравненият
+			// коментар досега -- както отляво, така и отдясно е подравнен.
+		</script>
+	</body>
+</html>

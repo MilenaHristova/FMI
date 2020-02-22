@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="three.min.js"></script>
+		<script src="human.js"></script>
+	</head>
+	
+	<body>
+		<h1>"Гушкане"<br><small>ф.н. 81861 &ndash; група 8 &ndash; Милена Христова</small></h1>
+
+		<script>
+			// нагласяване на цвета и центрирането на текста с имената ви
+			document.getElementsByTagName('h1')[0].style = 'color:white; text-align:center; font-size:1.75em';
+			
+			// рисувателно поле на цял екран
+			renderer = new THREE.WebGLRenderer({antialias:true});
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+			renderer.domElement.style = 'width:100%; height:100%; position:fixed; top:0; left:0; z-index:-1;';
+			
+			// сцена и камера
+			scene = new THREE.Scene();
+			camera = new THREE.PerspectiveCamera( 30, window.innerWidth/window.innerHeight, 0.1, 2000 );
+			camera.position.set(0,3,150);
+
+			// светлини
+			var light = new THREE.DirectionalLight('lightblue',0.8);
+			light.position.set(0,1,4);
+			scene.add(light);
+			scene.add( new THREE.AmbientLight('white',0.4) );
+			
+			// функция за анимиране на сцената
+			var t = 0; // време
+			function drawFrame()
+			{
+				requestAnimationFrame( drawFrame );
+				if (animate) animate(t++);
+				renderer.render( scene, camera );
+			}			
+			
+			// човече
+			man = мъжествен();
+            woman = женствен();
+            
+			// тук се описват статичните елементи на позата
+            man.rotateY(-Math.PI/2);
+            man.таз.position.set(-10, -10, 0);
+            man.л_крак.rotateZ(-Math.PI/2);
+            man.л_крак.rotateX(Math.PI/8);
+            man.д_крак.rotateZ(-Math.PI/3);
+            man.д_крак.rotateX(-Math.PI/8);
+            man.л_коляно.rotateZ(Math.PI/2);
+            man.л_крак.rotateZ(-Math.PI/8);
+            man.л_глезен.rotateZ(Math.PI/4);
+            
+            man.л_ръка.rotateX(Math.PI/9);
+            man.л_лакът.rotateX(-Math.PI/4);
+            man.л_лакът.rotateZ(-Math.PI/2);
+            man.л_лакът.rotateY(-Math.PI/2);
+            man.л_китка.rotateZ(Math.PI/2);
+            
+            man.д_ръка.rotateZ(-Math.PI/6);
+            man.д_лакът.rotateZ(-Math.PI/4);
+            man.д_лакът.rotateX(Math.PI/9);
+            man.д_китка.rotateZ(Math.PI/4);
+            man.д_китка.rotateX(Math.PI/8);
+            man.глава.rotateY(Math.PI/4);
+            
+            woman.position.set(0, -10, -5);
+            woman.rotateY(-Math.PI);
+            woman.rotateZ(Math.PI/2);
+            woman.тяло.rotateZ(-Math.PI/2*7/8);
+            woman.л_крак.rotateZ(-Math.PI/4.5);
+            woman.д_крак.rotateZ(-Math.PI/4.5);
+            woman.л_коляно.rotateZ(Math.PI/1.5);
+            woman.д_коляно.rotateZ(Math.PI/1.5);
+            woman.л_глезен.rotateZ(Math.PI/4);
+            woman.д_глезен.rotateZ(Math.PI/4);
+            woman.л_ръка.rotateZ(Math.PI/8);
+            woman.л_лакът.rotateZ(-Math.PI/2.5);
+            woman.л_китка.rotateZ(Math.PI/3);
+            woman.д_ръка.rotateZ(-Math.PI/4);
+            woman.д_лакът.rotateX(Math.PI/7);
+            woman.д_китка.rotateZ(Math.PI/3);
+        
+			// анимация на човечето
+			animate = function (t)
+			{
+				// тук се описват динамичните елементи на позата
+				// като променливата t е номер на кадър, като се
+				// очаква 1 секунда да е приблизително 60 кадъра
+                man.д_ръка.врът(sin(5*t)-5,0,0);
+				man.д_лакът.врът(0,0,sin(5*t)-5);
+			}
+
+			drawFrame();
+		</script>
+	</body>
+</html>

@@ -1,0 +1,5 @@
+zero one 1000 two 10
+one three 5
+three four 5
+two five 100
+five one 20

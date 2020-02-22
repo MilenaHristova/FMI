@@ -1,0 +1,4 @@
+three two 10
+two one 10
+one zero 10
+zero two 10
